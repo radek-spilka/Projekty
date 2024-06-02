@@ -12,13 +12,13 @@
 `Godot`
 - Programovací soutěž proti spolužákovi (vyhrál jsem) 
 ---
-***Projekt03*** *GameJam*
+***Projekt03*** *GameJamCoffee*
 
 `Godot`
 - Programovací soutěž na internetu
 > Lze hrát online: [Zde](https://linexx.itch.io/thats-delicious)
 ---
-***Projekt04*** *GameJam*
+***Projekt04*** *GameJamThreeHours*
 
 `Godot`
 - Programovací soutěž na internetu
@@ -49,7 +49,7 @@
 `Python`
 - Fejkový space invaders
 ---
-***Projekt10*** *GameJam*
+***Projekt10*** *GameJamOneMinute*
 
 `Unity`
 - První hra do programovací soutěže
