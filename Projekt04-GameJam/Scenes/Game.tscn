@@ -1,0 +1,410 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Scenes/Weigh.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/ConveyorBelt/ConveyorBelt8.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Box spawn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/ConveyorBelt/ConveyorBelt7.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/ConveyorBelt/ConveyorBelt2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/ConveyorBelt/ConveyorBelt5.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/ConveyorBelt/ConveyorBelt6.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/ConveyorBelt/ConveyorBelt1.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/ConveyorBelt/ConveyorBelt3.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/ConveyorBelt/ConveyorBelt4.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/ConveyorBeltEnd/ConveyorBeltEnd.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Background.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/WEigh/WeighHolder.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/btn/up.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/btn/down.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/btn/up_ready.png" type="Texture" id=17]
+[ext_resource path="res://Font/3Dventure.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://Sprites/pause.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/Pause.gd" type="Script" id=20]
+[ext_resource path="res://Sounds/conveyor belt.wav" type="AudioStream" id=21]
+[ext_resource path="res://Sounds/ButtonDown.wav" type="AudioStream" id=22]
+[ext_resource path="res://Sounds/Win.wav" type="AudioStream" id=23]
+[ext_resource path="res://Sprites/btn/pause_down.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/btn/pause_up.png" type="Texture" id=25]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 434, 24 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 14.0
+} ]
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 18 )
+
+[sub_resource type="Gradient" id=9]
+colors = PoolColorArray( 0.14902, 0.160784, 0.192157, 1, 0.360784, 0.368627, 0.403922, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 9 )
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.61962, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 1
+emission_sphere_radius = 400.0
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 300, 0 )
+initial_velocity = 250.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 5.0
+scale_random = 1.0
+scale_curve = SubResource( 11 )
+color_initial_ramp = SubResource( 8 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 0.631373, 0.631373, 0.631373, 1 )
+position = Vector2( 480, 270 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
+
+[node name="ConveyorBelt" type="StaticBody2D" parent="."]
+position = Vector2( 0, 38 )
+constant_linear_velocity = Vector2( 50, 0 )
+
+[node name="WeighHolder2" type="Sprite" parent="ConveyorBelt"]
+modulate = Color( 0.14902, 0.160784, 0.192157, 1 )
+position = Vector2( 750, -12 )
+rotation = -3.14159
+scale = Vector2( 3, 3 )
+texture = ExtResource( 14 )
+
+[node name="WeighHolder3" type="Sprite" parent="ConveyorBelt"]
+modulate = Color( 0.14902, 0.160784, 0.192157, 1 )
+position = Vector2( 500, -12 )
+rotation = -3.14159
+scale = Vector2( 3, 3 )
+texture = ExtResource( 14 )
+
+[node name="WeighHolder4" type="Sprite" parent="ConveyorBelt"]
+modulate = Color( 0.14902, 0.160784, 0.192157, 1 )
+position = Vector2( 250, -12 )
+rotation = -3.14159
+scale = Vector2( 3, 3 )
+texture = ExtResource( 14 )
+
+[node name="WeighHolder5" type="Sprite" parent="ConveyorBelt"]
+modulate = Color( 0.14902, 0.160784, 0.192157, 1 )
+position = Vector2( 0, -12 )
+rotation = -3.14159
+scale = Vector2( 3, 3 )
+texture = ExtResource( 14 )
+
+[node name="ColorRect2" type="ColorRect" parent="ConveyorBelt"]
+margin_top = 61.0
+margin_right = 875.0
+margin_bottom = 119.0
+color = Color( 0.14902, 0.160784, 0.192157, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="ConveyorBelt"]
+margin_top = 66.0
+margin_right = 864.0
+margin_bottom = 114.0
+color = Color( 0.360784, 0.368627, 0.403922, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt"]
+visible = false
+position = Vector2( 432, 90 )
+shape = SubResource( 1 )
+
+[node name="Node2D" type="Node2D" parent="ConveyorBelt"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 24, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 7
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 72, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 6
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 120, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 5
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 168, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 5
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 216, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 4
+playing = true
+
+[node name="AnimatedSprite6" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 264, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 4
+playing = true
+
+[node name="AnimatedSprite7" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 312, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 360, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 408, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 456, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 504, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 552, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 600, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite14" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 648, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite15" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 696, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite16" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 744, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="AnimatedSprite17" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 792, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="AnimatedSprite18" type="AnimatedSprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 840, 90 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="Sprite" type="Sprite" parent="ConveyorBelt/Node2D"]
+position = Vector2( 888, 90 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 12 )
+
+[node name="KillZone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KillZone"]
+polygon = PoolVector2Array( -94, -188, -115, 690, 1045, 708, 1105.29, -90.012, -84, -273, -689, -640, 1657, -489, 1708, 1092, -806, 1111, -666, -622, -88, -269 )
+
+[node name="Weigh" parent="." instance=ExtResource( 1 )]
+position = Vector2( 471, 354 )
+
+[node name="Box spawn" parent="." instance=ExtResource( 3 )]
+position = Vector2( 25, 12 )
+
+[node name="WeighHolder" type="Sprite" parent="."]
+modulate = Color( 0.219608, 0.231373, 0.262745, 1 )
+position = Vector2( 471, 460 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 14 )
+
+[node name="Confirm_btn" type="TextureButton" parent="."]
+margin_left = 841.0
+margin_top = 428.0
+margin_right = 941.0
+margin_bottom = 528.0
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 16 )
+texture_disabled = ExtResource( 15 )
+expand = true
+
+[node name="pause_btn" type="TextureButton" parent="."]
+margin_left = 433.0
+margin_top = 450.0
+margin_right = 510.0
+margin_bottom = 527.0
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 24 )
+expand = true
+
+[node name="Score" type="Label" parent="."]
+margin_left = -121.0
+margin_top = 454.0
+margin_right = 377.0
+margin_bottom = 544.0
+custom_colors/font_color = Color( 0.513726, 0.529412, 0.576471, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Score: x"
+align = 1
+valign = 1
+
+[node name="Pause" type="Node2D" parent="."]
+pause_mode = 2
+script = ExtResource( 20 )
+
+[node name="Pause" type="Sprite" parent="Pause"]
+pause_mode = 2
+position = Vector2( 480, 270 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 19 )
+
+[node name="clicktoplay" type="Label" parent="Pause"]
+pause_mode = 2
+margin_left = -154.0
+margin_top = 5.0
+margin_right = 1112.0
+margin_bottom = 95.0
+custom_colors/font_color = Color( 0.639216, 0.654902, 0.694118, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Click to start playing!"
+align = 1
+valign = 1
+
+[node name="info" type="Label" parent="Pause"]
+pause_mode = 2
+margin_left = -122.0
+margin_top = 396.0
+margin_right = 376.0
+margin_bottom = 486.0
+custom_colors/font_color = Color( 0.513726, 0.529412, 0.576471, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "your score"
+align = 1
+valign = 1
+
+[node name="info2" type="Label" parent="Pause"]
+pause_mode = 2
+margin_left = 1.0
+margin_top = 155.0
+margin_right = 499.0
+margin_bottom = 245.0
+custom_colors/font_color = Color( 0.513726, 0.529412, 0.576471, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "this needs to be 0"
+align = 1
+valign = 1
+
+[node name="info3" type="Label" parent="Pause"]
+pause_mode = 2
+margin_left = 435.0
+margin_top = 150.0
+margin_right = 933.0
+margin_bottom = 240.0
+custom_colors/font_color = Color( 0.513726, 0.529412, 0.576471, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "this needs to be 0"
+align = 1
+valign = 1
+
+[node name="info4" type="Label" parent="Pause"]
+pause_mode = 2
+margin_left = 284.0
+margin_top = 408.0
+margin_right = 809.0
+margin_bottom = 528.0
+custom_colors/font_color = Color( 0.513726, 0.529412, 0.576471, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "if left value == zero,
+if right value == zero,
+Press this button ----->"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="explotion" type="Particles2D" parent="."]
+position = Vector2( 474, 236 )
+emitting = false
+amount = 1000
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 12 )
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -15.731
+autoplay = true
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_KillZone_body_entered"]
+[connection signal="pressed" from="Confirm_btn" to="." method="_on_Confirm_btn_pressed"]
+[connection signal="pressed" from="pause_btn" to="." method="_on_pause_btn_pressed"]

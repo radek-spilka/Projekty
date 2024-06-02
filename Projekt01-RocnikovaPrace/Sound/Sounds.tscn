@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sound/Sounds/click.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sound/Sounds/switch.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sound/Sounds/slider.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sound/Sounds/confirm.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sound/Sounds/language.wav" type="AudioStream" id=6]
+
+[node name="Sounds" type="Node"]
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Sfx"
+
+[node name="Confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Sfx"
+
+[node name="Slider" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -16.199
+bus = "Sfx"
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -1.377
+pitch_scale = 2.0
+bus = "Sfx"
+
+[node name="Language" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 5.511
+bus = "Sfx"

@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Title/parallax_background.gd" type="Script" id=1]
+[ext_resource path="res://Title/1.png" type="Texture" id=2]
+[ext_resource path="res://Title/2.png" type="Texture" id=3]
+[ext_resource path="res://Title/4.png" type="Texture" id=4]
+[ext_resource path="res://Title/3.png" type="Texture" id=5]
+[ext_resource path="res://Title/5.png" type="Texture" id=6]
+[ext_resource path="res://Title/6.png" type="Texture" id=7]
+[ext_resource path="res://Font/Roboto-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Font/default.theme" type="Theme" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = -18
+font_data = ExtResource( 8 )
+
+[node name="Title" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 1 )
+camera_y_mainmenu = 850
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 960, 540 )
+motion_scale = Vector2( 1.5, 1.5 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 960, 540 )
+motion_scale = Vector2( 1.25, 1.25 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 960, 540 )
+motion_scale = Vector2( 1.15, 1.15 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 5 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 960, 540 )
+motion_scale = Vector2( 1.05, 1.05 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource( 4 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 960, 540 )
+motion_scale = Vector2( 1.05, 1.05 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource( 6 )
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 960, 540 )
+motion_scale = Vector2( 1.05, 1.05 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2( -92, -300 )
+texture = ExtResource( 7 )
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 960, 540 )
+motion_scale = Vector2( 1.05, 1.05 )
+
+[node name="NameTag" type="Label" parent="ParallaxBackground/ParallaxLayer7"]
+margin_left = -770.0
+margin_top = -495.0
+margin_right = 374.0
+margin_bottom = -149.0
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 1 )
+text = "GameTitleHere"
+align = 1
+valign = 1
